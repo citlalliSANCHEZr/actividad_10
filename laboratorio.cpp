@@ -1,4 +1,5 @@
 #include "laboratorio.h"
+#include<fstream>
 
 Laboratorio::Laboratorio()
 {
@@ -36,4 +37,75 @@ void Laboratorio::mostrar()
     //cout<<endl;
     cout<<c;
     }
+}
+void Laboratorio::respaldar_tabla()
+{
+    ofstream archivo("computadoras_tabla.txt");
+    if(archivo.is_open())
+    {
+    archivo<<left;
+    archivo<<setw(10)<<"SISTEMA";
+    archivo<<setw(10)<<"NOMBRE";
+    archivo<<setw(10)<<"MEMORIA";
+    archivo<<setw(10)<<"ALMACENAMIENTO";
+    archivo<<endl;
+        for(size_t i=0;i<cont;i++)
+        {
+              Computadora &c = arreglo[i];
+
+                archivo<<c;
+        }
+
+    }
+    archivo.close();
+}
+void Laboratorio::respaldar()
+{
+    ofstream archivo("computadoras.txt");
+    if(archivo.is_open())
+    {
+
+        for(size_t i=0;i<cont;i++)
+        {
+              Computadora &c = arreglo[i];
+
+                archivo<<c.getSistema()<<endl;
+                archivo<<c.getNombre()<<endl;
+                archivo<<c.getMemoria()<<endl;
+                archivo<<c.getAlmacenamiento()<<endl;
+        }
+
+    }
+    archivo.close();
+}
+void Laboratorio::recuperar()
+{
+    ifstream archivo("computadoras.txt");
+    if(archivo.is_open())
+    {
+        string temp;
+        float almacenamiento;
+        int memoria;
+        Computadora c;
+        while(true)
+        {
+            getline(archivo,temp);
+            if(archivo.eof())
+            {
+                break;
+            }
+            c.setSistema(temp);
+            getline(archivo,temp);
+            c.setNombre(temp);
+            getline(archivo,temp);
+            almacenamiento=stof(temp);
+            c.setAlmacenamiento(almacenamiento);
+            getline(archivo,temp);
+            memoria=stoi(temp);
+            c.setMemoria(memoria);
+
+            agregarCo(c);
+        }
+    }
+    archivo.close();
 }
