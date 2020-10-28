@@ -5,7 +5,12 @@ using namespace std;
 
 int main()
 {
-    Computadora c01 = Computadora("windows","Citlalli",4,60.1);
+    Laboratorio L;
+    L.recuperar();
+    L.recuperar();
+    L.mostrar();
+
+    /*Computadora c01 = Computadora("windows","Citlalli",4,60.1);
     Computadora c02;
 
     c02.setSistema("MACios");
@@ -21,7 +26,7 @@ int main()
     Computadora c03;
     cin>>c03;
     L<<c03;
-    L.mostrar();
+    L.mostrar();*/
 
     return 0;
 }
