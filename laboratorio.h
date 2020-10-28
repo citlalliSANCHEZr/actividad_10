@@ -10,6 +10,9 @@ public:
     Laboratorio();
     void agregarCo(const Computadora &c);
     void mostrar();
+    void respaldar();
+    void respaldar_tabla();
+    void recuperar();
     friend Laboratorio& operator<<(Laboratorio &la,const Computadora&c)
     {
         la.agregarCo(c);
